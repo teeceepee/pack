@@ -6,6 +6,11 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/build/',
     filename: 'bundle.js'
+  },
+  module: {
+    loaders: [
+      {test: /\.css$/, loader: "style!css"}
+    ]
   }
 };
 

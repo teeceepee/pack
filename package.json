@@ -11,7 +11,9 @@
     "jquery": "^2.2.3",
     "lodash": "^4.11.2"
   },
-  "devDependecies": {
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   }
