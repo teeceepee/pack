@@ -8,6 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "font-awesome": "^4.6.1",
     "jquery": "^2.2.3",
     "lodash": "^4.11.2",
     "purecss": "^0.6.0",
@@ -16,9 +17,11 @@
   "devDependencies": {
     "css-loader": "^0.23.1",
     "expose-loader": "^0.7.1",
+    "file-loader": "^0.8.5",
     "node-sass": "^3.7.0",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   }

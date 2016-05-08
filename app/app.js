@@ -4,6 +4,8 @@ var _ = require('lodash');
 
 // CSS
 require('purecss/build/tables.css');
+require('font-awesome/css/font-awesome.css');
+
 require('./app.css');
 
 $(document).ready(function () {
