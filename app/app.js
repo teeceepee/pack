@@ -1,6 +1,9 @@
+// JavaScript
 var $ = require('jquery');
 var _ = require('lodash');
 
+// CSS
+require('purecss/build/tables.css');
 require('./app.css');
 
 $(document).ready(function () {
