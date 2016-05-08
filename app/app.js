@@ -1,5 +1,5 @@
 // JavaScript
-var $ = require('jquery');
+//var $ = require('jquery');
 var _ = require('lodash');
 
 // CSS
