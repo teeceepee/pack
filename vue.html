@@ -14,10 +14,10 @@
   </div>
 
   <div id="form-container">
-    <form action="">
+    <form @submit.prevent>
       <label for="name">Name</label>
       <input v-model="name" type="text" id="name" name="name">
-      <input v-on:click="click" type="submit">
+      <input @click="click" type="submit" :value="name">
     </form>
     {{ name }}
   </div>

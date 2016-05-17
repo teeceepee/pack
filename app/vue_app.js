@@ -24,9 +24,8 @@ var form = new Vue({
     name: 'foo'
   },
   methods: {
-    click: function (e) {
+    click: function () {
       alert(this.name);
-      e.preventDefault()
     }
   }
 })
