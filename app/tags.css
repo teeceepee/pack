@@ -1,0 +1,15 @@
+#tags-container .display-panel {
+  border: 1px solid #CCC;
+  border-radius: 2px;
+  min-height: 100px;
+  margin: 5px;
+}
+
+#tags-container .tag {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 10px;
+  color: #FFF;
+  background-color: gray;
+  cursor: pointer;
+}

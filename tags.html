@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pack</title>
+</head>
+<body>
+  <h1 id="title">{{ title }}</h1>
+
+  <div id="tags-container">
+    <template v-for="tag in tags">
+      <span class="tag" @click="clickTag(tag)">{{ tag.text }}</span>
+    </template>
+
+    <div class="display-panel">
+      <template v-for="tag in selectedTags">
+        <div class="tag">
+          {{ tag.text }}
+          <span class="remove" @click="clickRemove(tag)">&times;</span>
+        </div>
+      </template>
+    </div>
+
+    <a :href="tags[0].text">asdf</a>
+    {{ tags | json }}
+  </div>
+
+
+  <script type="text/javascript" src="build/bundle.js" charset="utf-8"></script>
+
+</body>
+</html>
