@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>Pack</title>
+  <style>
+    [v-cloak] { display: none; }
+  </style>
 </head>
 <body>
-  <h1 id="title">{{ title }}</h1>
+  <h1 id="title" v-cloak>{{ title }}</h1>
 
-  <div id="tags-container">
+  <div id="tags-container" v-cloak>
     <template v-for="tag in tags">
       <span class="tag" :class="{selected: tag.selected}" @click="clickTag(tag)" @dblclick="clickRemove(tag)">
         {{ tag.text }}
