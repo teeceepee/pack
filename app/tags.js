@@ -12,6 +12,9 @@ var title = new Vue({
 var tagsContainer = new Vue({
   el: '#tags-container',
   data: {
+    a: {
+      width: '100%'
+    },
     tags: [
       {
         text: 'Backbone',
@@ -24,17 +27,25 @@ var tagsContainer = new Vue({
       {
         text: 'React',
         selected: false
+      },
+      {
+        text: 'Ember',
+        selected: false
+      },
+      {
+        text: 'Riot',
+        selected: false
       }
     ]
   },
 
   methods: {
     clickTag: function (tag) {
-      tag.selected = true;
+      tag.selected = true
     },
 
     clickRemove: function (tag) {
-      tag.selected = false;
+      tag.selected = false
     }
   },
 
@@ -43,6 +54,13 @@ var tagsContainer = new Vue({
       return this.tags.filter(function (tag) {
         return tag.selected === true
       })
+    },
+
+    selectedPercentage: function () {
+      var percentage = 100 * this.selectedTags.length / (this.tags.length)
+      return {
+        width: percentage + '%'
+      }
     }
   }
 })

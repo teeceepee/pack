@@ -9,20 +9,30 @@
 
   <div id="tags-container">
     <template v-for="tag in tags">
-      <span class="tag" @click="clickTag(tag)">{{ tag.text }}</span>
+      <span class="tag" :class="{selected: tag.selected}" @click="clickTag(tag)" @dblclick="clickRemove(tag)">
+        {{ tag.text }}
+      </span>
     </template>
 
     <div class="display-panel">
       <template v-for="tag in selectedTags">
-        <div class="tag">
+        <div class="tag" :class="{selected: tag.selected}">
           {{ tag.text }}
           <span class="remove" @click="clickRemove(tag)">&times;</span>
         </div>
       </template>
     </div>
 
-    <a :href="tags[0].text">asdf</a>
-    {{ tags | json }}
+    <div class="progress-bar">
+      <div class="progress-bar-inner" :style="selectedPercentage"></div>
+    </div>
+
+    <div>
+      {{ tags | json }}
+    </div>
+    <div>
+      {{ selectedPercentage | json }}
+    </div>
   </div>
 
 

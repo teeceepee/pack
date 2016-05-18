@@ -10,6 +10,22 @@
   margin: 5px;
   padding: 5px 10px;
   color: #FFF;
-  background-color: gray;
   cursor: pointer;
+  background-color: hsla(0, 0%, 50%, 1);
+  border: 2px solid hsla(0, 0%, 50%, 1);
+}
+
+#tags-container .tag.selected {
+  border: 2px solid hsla(0, 0%, 25%, 1);
+}
+
+.progress-bar {
+  margin: 5px;
+  background-color: hsla(0, 0%, 80%, .2);
+}
+
+.progress-bar-inner {
+  height: 1.5em;
+  background-color: hsla(0, 0%, 20%, .8);
+  width: 50%;
 }
