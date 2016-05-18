@@ -1,5 +1,5 @@
 require('./app.css')
-require('./tags.css')
+require('./tags.scss')
 
 var Vue = require('vue')
 
