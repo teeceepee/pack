@@ -1,3 +1,4 @@
+require('./app.css')
 require('./tags.css')
 
 var Vue = require('vue')
@@ -59,7 +60,7 @@ var tagsContainer = new Vue({
     selectedPercentage: function () {
       var percentage = 100 * this.selectedTags.length / (this.tags.length)
       return {
-        width: percentage + '%'
+        width: `${percentage}%`
       }
     }
   }
