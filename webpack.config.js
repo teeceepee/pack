@@ -21,6 +21,9 @@ module.exports = {
         loaders: ['style', 'css', 'sass']
       }
     ]
+  },
+  sassLoader: {
+    outputStyle: 'nested'
   }
 };
 
