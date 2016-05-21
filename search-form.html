@@ -6,8 +6,9 @@
 </head>
 <body>
   <div id="forms">
-    <search-form></search-form>
-    <search-form></search-form>
+    <template v-for="name in names">
+      <search-form :submit="name"></search-form>
+    </template>
   </div>
 
 <template id="search-component">
@@ -20,7 +21,7 @@
         <input v-model="keywords" type="search" class="form-control">
       </div>
     </div>
-    <input @click.prevent="search(keywords)" type="submit" value="Search" class="btn btn-default">
+    <input @click.prevent="search(keywords)" type="submit" :value="submit" class="btn btn-default">
     <span>{{ keywordArray | json }}</span>
   </form>
 </template>
