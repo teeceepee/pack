@@ -3,7 +3,8 @@ var path = require('path');
 module.exports = {
   entry: {
     bundle: './app/entry.js',
-    tags: './app/tags.js'
+    tags: './app/tags.js',
+    'search-form': './app/search-form.js',
   },
   output: {
     path: path.resolve(__dirname, 'build'),

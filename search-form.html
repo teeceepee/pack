@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Search Form</title>
+</head>
+<body>
+  <div id="forms">
+    <search-form></search-form>
+    <search-form></search-form>
+  </div>
+
+<template id="search-component">
+  <form class="search-form form-inline">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">
+          <span class="glyphicon glyphicon-search"></span>
+        </div>
+        <input v-model="keywords" type="search" class="form-control">
+      </div>
+    </div>
+    <input @click.prevent="search(keywords)" type="submit" value="Search" class="btn btn-default">
+    <span>{{ keywordArray | json }}</span>
+  </form>
+</template>
+
+<script type="text/javascript" src="build/search-form.js" charset="utf-8"></script>
+
+</body>
+</html>
