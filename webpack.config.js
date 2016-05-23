@@ -5,6 +5,7 @@ module.exports = {
     bundle: './app/entry.js',
     tags: './app/tags.js',
     'search-form': './app/search-form.js',
+    ground: './app/ground.js'
   },
   output: {
     path: path.resolve(__dirname, 'build'),

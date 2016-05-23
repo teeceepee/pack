@@ -1,0 +1,23 @@
+$cell-size: 50px;
+$cell-color: hsla(0, 0%, 50%, 1);
+
+.ground {
+  display: inline-block;
+  margin: 2em auto;
+
+  .ground-row {
+    height: $cell-size;
+
+    .cell {
+      box-sizing: border-box;
+      display: inline-block;
+      border: 1px solid $cell-color;
+      width: $cell-size;
+      height: $cell-size;
+
+      &.selected {
+        background-color: $cell-color;
+      }
+    }
+  }
+}

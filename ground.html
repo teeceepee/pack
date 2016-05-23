@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ground</title>
+</head>
+<body>
+
+<div id="ground-wrapper">
+  <ground :rows="10", :columns="20"></ground>
+</div>
+
+<div id="ground"></div>
+
+
+<template id="cell-tmpl">
+  <div class="cell"
+       :class="{selected: isSelected}"
+       @click="click"
+       @contextmenu.prevent="click"
+  >
+  </div>
+</template>
+
+<template id="ground-row-tmpl">
+  <div class="ground-row">
+    <cell v-for="c in columns"></cell>
+  </div>
+</template>
+
+<template id="ground-tmpl">
+  <div class="ground">
+    <ground-row :columns="columns" v-for="r in rows"></ground-row>
+  </div>
+</template>
+
+<script type="text/javascript" src="build/ground.js" charset="utf-8"></script>
+
+</body>
+</html>
