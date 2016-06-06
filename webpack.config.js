@@ -5,7 +5,8 @@ module.exports = {
     bundle: './app/entry.js',
     tags: './app/tags.js',
     'search-form': './app/search-form.js',
-    ground: './app/ground.js'
+    ground: './app/ground.js',
+    mask: './app/mask.js',
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -25,7 +26,11 @@ module.exports = {
       {
         test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "file-loader"
-      }
+      },
+      {
+        test: /\.jpg$/,
+        loader: 'file-loader'
+      },
     ]
   },
   sassLoader: {
