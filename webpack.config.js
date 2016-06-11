@@ -7,6 +7,7 @@ module.exports = {
     'search-form': './app/search-form.js',
     ground: './app/ground.js',
     mask: './app/mask.js',
+    'vue-resource': './app/vue-resource.js',
   },
   output: {
     path: path.resolve(__dirname, 'build'),
