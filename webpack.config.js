@@ -10,8 +10,8 @@ module.exports = {
     'vue-resource': './app/vue-resource.js',
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/build/',
+    path: path.resolve(__dirname, 'public/assets'),
+    publicPath: '/assets',
     filename: '[name].js'
   },
   module: {
