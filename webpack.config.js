@@ -26,16 +26,15 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader"
+        loader: 'file-loader?name=[name]-[hash].[ext]'
       },
       {
         test: /\.jpg$/,
-        loader: 'file-loader'
-      },
+        loader: 'file-loader?name=[path][name]-[hash].[ext]'
+      }
     ]
   },
   sassLoader: {
     outputStyle: 'nested'
   }
 };
-
