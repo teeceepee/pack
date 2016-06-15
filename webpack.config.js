@@ -1,4 +1,5 @@
 var path = require('path');
+var AssetsPlugin = require('assets-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -10,8 +11,8 @@ module.exports = {
     'vue-resource': './app/vue-resource.js',
   },
   output: {
-    path: path.resolve(__dirname, 'public/assets'),
-    publicPath: '/assets',
+    path: path.resolve(__dirname, 'public', 'assets'),
+    publicPath: '/assets/',
     filename: '[name].js'
   },
   module: {
@@ -34,6 +35,14 @@ module.exports = {
       }
     ]
   },
+
+  plugins: [
+    new AssetsPlugin({
+      path: path.resolve(__dirname, 'public', 'assets'),
+      prettyPrint: true
+    })
+  ],
+
   sassLoader: {
     outputStyle: 'nested'
   }
