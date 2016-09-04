@@ -1,8 +1,7 @@
 //require("expose?React!react")
 var React = require('react')
 var ReactDOM = require('react-dom')
-
-console.log(React);
+var Immutable = require('immutable');
 
 
 var SyncInput = React.createClass({
@@ -10,13 +9,15 @@ var SyncInput = React.createClass({
 
   getInitialState: function () {
     return {
-      value: 'default'
+      data: Immutable.Map({
+        value: 'placeholder',
+      })
     }
   },
 
   handleChange: function (e) {
     this.setState({
-      value: e.target.value
+      data: this.state.data.set('value', e.target.value)
     })
   },
 
@@ -29,7 +30,7 @@ var SyncInput = React.createClass({
           'input',
           {
             type: 'text',
-            value: this.state.value,
+            value: this.state.data.get('value'),
             onChange: this.handleChange,
           }),
         React.createElement(
@@ -38,7 +39,7 @@ var SyncInput = React.createClass({
           React.createElement(
             'code',
             null,
-            this.state.value
+            this.state.data.get('value')
           )
         )
       )
