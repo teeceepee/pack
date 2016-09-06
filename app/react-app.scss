@@ -1,0 +1,22 @@
+.tabs {
+  list-style: none;
+  border-bottom: 1px solid gray;
+  .tab {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #eee;
+    }
+
+    &.active {
+      color: white;
+      background-color: #337ab7;
+    }
+  }
+}

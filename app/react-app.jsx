@@ -3,6 +3,8 @@ var React = require('react')
 var ReactDOM = require('react-dom')
 var Immutable = require('immutable');
 
+require('./react-app.scss')
+
 
 class SyncTextarea extends React.Component {
   constructor(props) {
@@ -82,4 +84,113 @@ ReactDOM.render(
 ReactDOM.render(
   <SyncTextarea />,
   document.getElementById('sync-textarea')
+)
+
+class Foo extends React.Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      active: null,
+      options: Immutable.Map({
+        developer: [
+          'JavaScript',
+          'Ruby',
+          'Rust',
+        ],
+        designer: [
+          'UI',
+          'UX',
+        ]
+      }),
+      items: [],
+    }
+  }
+
+  handleClickTab(key) {
+    this.setState(Object.assign(this.state, {active: key}))
+  }
+
+  handleClickOption(option) {
+    let items = this.state.items;
+    if (items.indexOf(option) < 0) {
+      items.push(option);
+      this.setState(Object.assign(this.state, {
+        items: items
+      }))
+    }
+  }
+
+  tabs() {
+    let tabs = this.state.options.entrySeq().map(([k, v]) => {
+      let classes = this.state.active === k ? 'tab active' : 'tab'
+      return (
+        <div
+          className={classes}
+          key={k}
+          onClick={() => { this.handleClickTab(k) }}
+        >
+          {k}
+        </div>
+      )
+    })
+
+    return (
+      <div
+        className="tabs"
+      >
+        {tabs}
+      </div>
+    )
+  }
+
+  selectable() {
+    let active_options = (this.state.options.get(this.state.active) || []).map((option, i) => {
+      return (
+        <li
+          key={i}
+          onClick={() => { this.handleClickOption(option) }}
+        >
+          {option}
+        </li>
+      )
+    })
+    return (
+      <ul>
+        {active_options}
+      </ul>
+    )
+  }
+
+  item_list() {
+    let items = this.state.items.map((item, i) => {
+      return (
+        <li key={i}>
+          {item}
+        </li>
+      )
+    })
+    return (
+      <ul>
+        {items}
+      </ul>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        {this.tabs()}
+        {this.selectable()}
+        {this.item_list()}
+      </div>
+    )
+  }
+
+}
+
+ReactDOM.render(
+  <Foo />,
+  document.getElementById('foo')
 )
