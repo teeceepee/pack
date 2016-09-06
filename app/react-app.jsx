@@ -104,7 +104,7 @@ class Foo extends React.Component {
           'UX',
         ]
       }),
-      items: [],
+      items: Immutable.List(),
     }
   }
 
@@ -113,11 +113,9 @@ class Foo extends React.Component {
   }
 
   handleClickOption(option) {
-    let items = this.state.items;
-    if (items.indexOf(option) < 0) {
-      items.push(option);
+    if (!this.state.items.includes(option)) {
       this.setState(Object.assign(this.state, {
-        items: items
+        items: this.state.items.push(option)
       }))
     }
   }
