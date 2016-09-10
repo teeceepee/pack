@@ -9,7 +9,8 @@ module.exports = {
     ground: './app/ground.js',
     mask: './app/mask.js',
     'vue-resource': './app/vue-resource.js',
-    'react-app': './app/react-app.jsx'
+    'react-app': './app/react-app.jsx',
+    todo: './app/todo.jsx'
   },
   output: {
     path: path.resolve(__dirname, 'public', 'assets'),
