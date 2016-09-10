@@ -1,7 +1,12 @@
 //require("expose?React!react")
-var React = require('react')
-var ReactDOM = require('react-dom')
-var Immutable = require('immutable');
+let React = require('react')
+let ReactDOM = require('react-dom')
+let Immutable = require('immutable')
+let Redux = require('redux')
+let ReactRedux = require('react-redux')
+let Component = React.Component
+let PropTypes = React.PropTypes
+let Provider = ReactRedux.Provider
 
 require('./react-app.scss')
 
@@ -191,4 +196,151 @@ class Foo extends React.Component {
 ReactDOM.render(
   <Foo />,
   document.getElementById('foo')
+)
+
+
+let initalState = {
+  active: null,
+  options: Immutable.Map({
+    developer: [
+      'JavaScript',
+      'Ruby',
+      'Rust',
+    ],
+    designer: [
+      'UI',
+      'UX',
+    ]
+  }),
+  items: Immutable.List(),
+}
+
+// Actions
+const SHOW_TAB = 'SHOW_TAB'
+const ADD_ITEM = 'ADD_ITEM'
+
+let showTab = function (index) {
+  return {type: SHOW_TAB, index}
+}
+
+let addItem = function (item) {
+  return {type: ADD_ITEM, item}
+}
+
+// Reducers
+let active = function (state = initalState.active, action) {
+  switch (action.type) {
+    case SHOW_TAB:
+      return action.index
+    default:
+      return state
+  }
+}
+
+let options = function (state = initalState.options, action) {
+  return state
+}
+
+let items = function (state = initalState.items, action) {
+  switch (action.type) {
+    case ADD_ITEM:
+      let newState = state.includes(action.item) ? state : state.push(action.item)
+      return newState
+    default:
+      return state
+  }
+}
+
+let navTabsReducer = Redux.combineReducers({
+  active,
+  options,
+  items,
+})
+
+let navTabsStore = Redux.createStore(navTabsReducer)
+
+class NavTabs extends React.Component {
+  constructor(props) {
+    super(props)
+
+  }
+
+  tabs(options, active) {
+    let tabs = options.entrySeq().map(([k, v]) => {
+      let classes = active === k ? 'tab active' : 'tab'
+      return (
+        <div
+          className={classes}
+          key={k}
+          onClick={() => { this.props.dispatch(showTab(k)) }}
+        >
+          {k}
+        </div>
+      )
+    })
+
+    return (
+      <div
+        className="tabs"
+      >
+        {tabs}
+      </div>
+    )
+  }
+
+  selectable(options, active) {
+    let active_options = (options.get(active) || []).map((option, i) => {
+      return (
+        <li
+          key={i}
+          onClick={() => { this.props.dispatch(addItem(option)) }}
+        >
+          {option}
+        </li>
+      )
+    })
+    return (
+      <ul>
+        {active_options}
+      </ul>
+    )
+  }
+
+  item_list(items) {
+    let lis = items.map((item, i) => {
+      return (
+        <li key={i}>
+          {item}
+        </li>
+      )
+    })
+    return (
+      <ul>
+        {lis}
+      </ul>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        {this.tabs(this.props.options, this.props.active)}
+        {this.selectable(this.props.options, this.props.active)}
+        {this.item_list(this.props.items)}
+      </div>
+    )
+  }
+}
+
+let select = function (state) {
+  return state
+}
+
+var ConnectedNavTabs = ReactRedux.connect(select)(NavTabs)
+
+ReactDOM.render(
+  <Provider store={navTabsStore}>
+    <ConnectedNavTabs />
+  </Provider>,
+  document.getElementById('nav-tabs')
 )
