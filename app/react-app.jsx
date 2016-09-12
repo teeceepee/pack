@@ -8,6 +8,7 @@ let Component = React.Component
 let PropTypes = React.PropTypes
 let Provider = ReactRedux.Provider
 
+require('purecss/build/menus.css')
 require('./react-app.scss')
 
 
@@ -267,23 +268,30 @@ class NavTabs extends React.Component {
 
   tabs(options, active) {
     let tabs = options.entrySeq().map(([k, v]) => {
-      let classes = active === k ? 'tab active' : 'tab'
+      let classes = active === k ? 'pure-menu-item pure-menu-selected' : 'pure-menu-item'
       return (
-        <div
+        <li
           className={classes}
           key={k}
           onClick={() => { this.props.dispatch(showTab(k)) }}
         >
-          {k}
-        </div>
+          <a
+            href="#"
+            className="pure-menu-link"
+          >
+            {k}
+          </a>
+        </li>
       )
     })
 
     return (
       <div
-        className="tabs"
+        className="pure-menu pure-menu-horizontal"
       >
-        {tabs}
+        <ul className="pure-menu-list">
+          {tabs}
+        </ul>
       </div>
     )
   }
