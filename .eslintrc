@@ -1,7 +1,12 @@
 {
-  "extends": "airbnb",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "react"
+  ],
   "rules": {
-    "object-curly-spacing": ["error", "never"],
-    "semi": ["error", "never"]
+    "comma-dangle": ["error", "always-multiline"]
   }
 }
