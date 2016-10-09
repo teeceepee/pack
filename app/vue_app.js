@@ -29,3 +29,20 @@ var form = new Vue({
     }
   }
 })
+
+let clock = new Vue({
+  el: '#clock',
+  data: {
+    now: null,
+  },
+  created: function () {
+    var setNow = function () {
+      this.now = new Date().toString()
+    }.bind(this)
+
+    setNow()
+    setInterval(function () {
+      setNow()
+    }.bind(this), 1000)
+  },
+})
