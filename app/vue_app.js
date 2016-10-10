@@ -46,3 +46,40 @@ let clock = new Vue({
     }.bind(this), 1000)
   },
 })
+
+let selectForm = new Vue({
+  el: "#select-form",
+  data: {
+    selected: null,
+    options: [
+      {
+        text: null,
+        value: null,
+      },
+      {
+        text: "one",
+        value: "1",
+      },
+      {
+        text: "two",
+        value: "2",
+      },
+      {
+        text: "three",
+        value: "3",
+      },
+      {
+        text: "four",
+        value: "4",
+      },
+      {
+        text: "five",
+        value: "5",
+      },
+      {
+        text: "six",
+        value: "6",
+      },
+    ]
+  },
+})

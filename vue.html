@@ -26,6 +26,19 @@
     <code>{{ now }}</code>
   </div>
 
+  <div id="select-form">
+    <span>
+      Selected: {{ selected }}
+    </span>
+    <form @submit.prevent>
+      <select v-model="selected" name="number" id="number">
+        <option v-for="option in options" :value="option.value">
+          {{ option.text }}
+        </option>
+      </select>
+    </form>
+  </div>
+
 
 <template id="my-component">
   <div>A custom component!</div>
