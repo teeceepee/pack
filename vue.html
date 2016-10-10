@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Pack</title>
 </head>
-<body>
+<body class="pure">
   <div id="app">
     {{ message }}
   </div>
@@ -14,10 +14,10 @@
   </div>
 
   <div id="form-container">
-    <form @submit.prevent>
+    <form class="pure-form" @submit.prevent>
       <label for="name">Name</label>
       <input v-model="name" type="text" id="name" name="name">
-      <input @click="click" type="submit" :value="name">
+      <input @click="click" type="submit" :value="name" class="pure-button">
     </form>
     {{ name }}
   </div>
@@ -30,7 +30,7 @@
     <span>
       Selected: {{ selected }}
     </span>
-    <form @submit.prevent>
+    <form class="pure-form" @submit.prevent>
       <select v-model="selected" name="number" id="number">
         <option v-for="option in options" :value="option.value">
           {{ option.text }}
@@ -39,11 +39,35 @@
     </form>
   </div>
 
+  <div id="location-form">
+    <span>
+      Current location: {{ currentLocation() }}
+    </span>
+    <form @submit.prevent class="pure-form pure-form-aligned">
+      <div class="pure-control-group">
+        <label @click="clickLabel(selectedLocation)" for="location">Location</label>
+        <select v-model="selectedLocation" id="location">
+          <option v-for="option in locationOptions" :value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+      </div>
+
+      <div v-if="showOther()" class="pure-control-group">
+        <label @click="clickLabel(otherLocation)" for="other-location">Other Location</label>
+        <input v-model="otherLocation" id="other-location" type="text">
+      </div>
+
+      <div class="pure-controls">
+        <button type="submit" class="pure-button">Submit</button>
+      </div>
+    </form>
+  </div>
 
 <template id="my-component">
   <div>A custom component!</div>
 </template>
-<script type="text/javascript" src="/assets/bundle.js" charset="utf-8"></script>
+<script type="text/javascript" src="/assets/vue-app.js" charset="utf-8"></script>
 
 </body>
 </html>

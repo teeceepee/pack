@@ -1,3 +1,7 @@
+require('purecss/build/base-context.css')
+require('purecss/build/forms.css')
+require('purecss/build/buttons.css')
+
 //require("expose?Vue!vue")
 var Vue = require('vue')
 
@@ -82,4 +86,37 @@ let selectForm = new Vue({
       },
     ]
   },
+})
+
+let locationForm = new Vue({
+  el: "#location-form",
+  data: {
+    selectedLocation: null,
+    locationOptions: [
+      {
+        text: "Beijing",
+        value: "beijing",
+      },
+      {
+        text: "Shanghai",
+        value: "shanghai",
+      },
+      {
+        text: "Other",
+        value: "other",
+      }
+    ],
+    otherLocation: null,
+  },
+  methods: {
+    showOther: function () {
+      return this.selectedLocation === 'other'
+    },
+    currentLocation: function () {
+      return this.showOther() ? this.otherLocation : this.selectedLocation
+    },
+    clickLabel: function (label) {
+      console.log(label);
+    }
+  }
 })

@@ -4,6 +4,7 @@ var AssetsPlugin = require('assets-webpack-plugin');
 module.exports = {
   entry: {
     bundle: './app/entry.js',
+    'vue-app': './app/vue-app.js',
     tags: './app/tags.js',
     'search-form': './app/search-form.js',
     ground: './app/ground.js',
