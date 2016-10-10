@@ -3,7 +3,7 @@ require('purecss/build/forms.css')
 require('purecss/build/buttons.css')
 
 //require("expose?Vue!vue")
-var Vue = require('vue')
+var Vue = require('vue/dist/vue')
 
 var vm = new Vue({
   el: '#app',

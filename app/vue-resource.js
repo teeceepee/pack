@@ -1,4 +1,4 @@
-var Vue = require('vue')
+var Vue = require('vue/dist/vue')
 
 Vue.use(require('vue-resource'))
 
@@ -10,7 +10,7 @@ new Vue({
     title: '',
   },
 
-  ready: function () {
+  mounted: function () {
     this.$http({
       url: '/data/foo.json',
       method: 'GET'
