@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>iframe</title>
+  <style>
+    iframe {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="/"></iframe>
+  <script>
+    function resizeIframe(iframe) {
+      iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+      iframe.style.width = iframe.contentWindow.document.body.scrollWidth + 'px';
+    }
+
+    document.querySelector('iframe').addEventListener('load', function (e) {
+      resizeIframe(e.target)
+    }, false)
+  </script>
+</body>
+</html>
