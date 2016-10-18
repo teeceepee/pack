@@ -11,7 +11,8 @@ module.exports = {
     mask: './app/mask.js',
     'vue-resource': './app/vue-resource.js',
     'react-app': './app/react-app.jsx',
-    todo: './app/todo.jsx'
+    todo: './app/todo.jsx',
+    'select2-demo': './app/select2-demo.js',
   },
   output: {
     path: path.resolve(__dirname, 'public', 'assets'),
