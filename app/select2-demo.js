@@ -1,4 +1,5 @@
 require("select2/dist/css/select2.css")
+require("./select2-demo.scss")
 
 var $ = require("jquery")
 require("select2")
@@ -40,4 +41,7 @@ const data = [
 $("#array-data").select2({
   placeholder: "Array data",
   data: data,
+})
+
+$("#multiple").select2({
 })
