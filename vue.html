@@ -64,6 +64,33 @@
     </form>
   </div>
 
+  <div id="textarea-form">
+    <hr>
+    <span>{{ text }}</span>
+    <form @submit.prevent class="pure-form pure-form-aligned">
+      <div class="pure-control-group">
+        <label v-for="f in frameworks">
+          <input type="radio" :value="f" v-model="framework">
+          {{ f }}
+        </label>
+      </div>
+
+      <div v-if="framework">
+        <div class="pure-control-group">
+          <select v-model="language">
+            <option v-for="option in languageOptions" :value="option">{{ option }}</option>
+          </select>
+
+          <select v-if="showEs" v-model="es">
+            <option v-for="option in esOptions" :value="option">{{ option }}</option>
+          </select>
+        </div>
+        <textarea v-model="text"></textarea>
+      </div>
+
+    </form>
+  </div>
+
 <template id="my-component">
   <div>A custom component!</div>
 </template>

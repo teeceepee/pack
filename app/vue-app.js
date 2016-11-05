@@ -120,3 +120,42 @@ let locationForm = new Vue({
     }
   }
 })
+
+let textareaData = {
+  framework: null,
+  frameworks: [
+    'Rails',
+    'Sinatra',
+  ],
+  language: null,
+  languageOptions: [
+    'Ruby',
+    'JavaScript',
+    'Rust',
+  ],
+
+  es: null,
+  esOptions: [
+    'ES 3',
+    'ES 5',
+    'ES 2015',
+    'ES 2016',
+  ],
+
+  text: null,
+
+}
+
+let textarea = new Vue({
+  el: "#textarea-form",
+  data: textareaData,
+
+  computed: {
+    showEs: function () {
+      return this.language == 'JavaScript'
+    }
+  },
+
+  mounted: function () {
+  }
+})
