@@ -71,7 +71,7 @@ $("#language").select2({
   // Select2 的 data 选项是插入新的 option 元素,
   // 通过先清空 option 再插入实现重新设置选项
   if (el.data("select2")) {
-    el.html("")
+    el.empty()
   }
 
   el.select2({
