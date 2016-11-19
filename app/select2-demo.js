@@ -78,5 +78,22 @@ $("#language").select2({
     data: dynamicData[current],
     minimumResultsForSearch: Infinity,
   })
-
 }).trigger("change")
+
+
+$("#search").select2({
+  matcher: function(params, data) {
+    // Always return the object if there is nothing to compare
+    if ($.trim(params.term) === '') {
+      return data;
+    }
+
+    var eigen = ($(data.element).data("eigen") || "").toUpperCase()
+    var term = params.term.toUpperCase()
+    if (eigen.indexOf(term) >= 0) {
+      return data
+    } else {
+      return null
+    }
+  }
+})
