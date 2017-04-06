@@ -3,6 +3,7 @@ let React = require('react')
 let ReactDOM = require('react-dom')
 let Immutable = require('immutable')
 let Redux = require('redux')
+let thunkMiddleware = require('redux-thunk').default
 let ReactRedux = require('react-redux')
 let Component = React.Component
 let PropTypes = React.PropTypes
@@ -228,6 +229,15 @@ let addItem = function (item) {
   return {type: ADD_ITEM, item}
 }
 
+// fake async action
+let addItemAsync = function (item) {
+  return function (dispatch, getState) {
+    setTimeout(function () {
+      dispatch(addItem(item))
+    }, 1000)
+  }
+}
+
 // Reducers
 let active = function (state = initalState.active, action) {
   switch (action.type) {
@@ -258,7 +268,7 @@ let navTabsReducer = Redux.combineReducers({
   items,
 })
 
-let navTabsStore = Redux.createStore(navTabsReducer)
+let navTabsStore = Redux.createStore(navTabsReducer, Redux.applyMiddleware(thunkMiddleware))
 
 class NavTabs extends React.Component {
   constructor(props) {
@@ -301,7 +311,7 @@ class NavTabs extends React.Component {
       return (
         <li
           key={i}
-          onClick={() => { this.props.dispatch(addItem(option)) }}
+          onClick={() => { this.props.dispatch(addItemAsync(option)) }}
         >
           {option}
         </li>
