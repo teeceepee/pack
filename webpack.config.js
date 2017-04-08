@@ -13,6 +13,7 @@ module.exports = {
     'react-app': './app/react-app.jsx',
     todo: './app/todo.jsx',
     'select2-demo': './app/select2-demo.js',
+    'bilibili': './app/bilibili.js',
   },
   output: {
     path: path.resolve(__dirname, 'public', 'assets'),
