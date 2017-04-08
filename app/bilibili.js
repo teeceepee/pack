@@ -2,6 +2,7 @@ let React = require('react')
 let ReactDOM = require('react-dom')
 let Redux = require('redux')
 let thunkMiddleware = require('redux-thunk').default
+let loggerMiddleware = require('redux-logger').default
 let ReactRedux = require('react-redux')
 
 let Component = React.Component
@@ -79,7 +80,10 @@ let rootReducer = Redux.combineReducers({
 
 let store = Redux.createStore(
   rootReducer,
-  Redux.applyMiddleware(thunkMiddleware)
+  Redux.applyMiddleware(
+    thunkMiddleware,
+    loggerMiddleware
+  )
 )
 
 class Roll extends Component {
