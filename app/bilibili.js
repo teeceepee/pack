@@ -8,6 +8,8 @@ let Component = React.Component
 let Provider = ReactRedux.Provider
 
 let ROLL = "ROLL"
+let START = "START"
+let STOP = "STOP"
 
 function roll(icon) {
   return {
@@ -16,39 +18,67 @@ function roll(icon) {
   }
 }
 
+function start() {
+  return {
+    type: START,
+  }
+}
+
+function stop() {
+  return {
+    type: STOP,
+  }
+}
+
 function fetchRandom() {
   return (dispatch) => {
+    dispatch(start())
+
     setTimeout(() => {
-      fetch("/data/index-icon.json").then(function (resp) {
-        return resp.json()
-      }).then(function (json) {
+      fetch("/data/index-icon.json").then((resp) => resp.json()).then(function (json) {
         let len = json.fix.length
         let i = Math.floor(Math.random() * len)
         let icon = json.fix[i]
 
         dispatch(roll(icon))
+        dispatch(stop())
       })
     }, 1000)
   }
 }
 
 let initialState = {
+  isFetching: false,
   icon: null,
 }
 
-function icon(state = initialState, action) {
+function isFetching(state = initialState.isFetching, action) {
   switch (action.type) {
-    case ROLL:
-      return {
-        icon: action.icon,
-      }
+    case START:
+      return true
+    case STOP:
+      return false
     default:
       return state
   }
 }
 
+function icon(state = initialState.icon, action) {
+  switch (action.type) {
+    case ROLL:
+      return action.icon
+    default:
+      return state
+  }
+}
+
+let rootReducer = Redux.combineReducers({
+  isFetching,
+  icon
+})
+
 let store = Redux.createStore(
-  icon,
+  rootReducer,
   Redux.applyMiddleware(thunkMiddleware)
 )
 
@@ -59,17 +89,24 @@ class Roll extends Component {
   }
 
   renderIcon() {
-    if (this.props.icon) {
-      let icon = this.props.icon
-
+    if (this.props.isFetching) {
       return (
         <div>
-          <p>{icon.title}</p>
-          <a href={icon.links[0]} title={icon.title} target="_blank">
-            <img src={icon.icon} />
-          </a>
+          Fetching
         </div>
       )
+    } else {
+      if (this.props.icon) {
+        let icon = this.props.icon
+        return (
+          <div>
+            <p>{icon.title}</p>
+            <a href={icon.links[0]} title={icon.title} target="_blank">
+              <img src={icon.icon}/>
+            </a>
+          </div>
+        )
+      }
     }
   }
 
