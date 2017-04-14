@@ -1,12 +1,9 @@
-let React = require('react')
-let ReactDOM = require('react-dom')
-let Redux = require('redux')
-let thunkMiddleware = require('redux-thunk').default
-let loggerMiddleware = require('redux-logger').default
-let ReactRedux = require('react-redux')
-
-let Component = React.Component
-let Provider = ReactRedux.Provider
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import * as Redux from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import loggerMiddleware from 'redux-logger'
+import { Provider, connect } from 'react-redux'
 
 let ROLL = "ROLL"
 let START = "START"
@@ -127,7 +124,7 @@ class Roll extends Component {
   }
 }
 
-let ConnectedRoll = ReactRedux.connect((state) => state)(Roll)
+let ConnectedRoll = connect((state) => state)(Roll)
 
 ReactDOM.render(
   <Provider store={store}>
