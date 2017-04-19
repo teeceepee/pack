@@ -25,3 +25,10 @@ $(document).ready(function () {
 
 });
 
+async function foo () {
+  let r = await fetch('https://api.github.com/users')
+  console.log(r)
+}
+
+foo()
+
