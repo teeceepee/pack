@@ -3,7 +3,10 @@
     "react",
     [
       "env", {
-        exclude: ["transform-regenerator"]
+        exclude: ["transform-regenerator"],
+        "targets": {
+          "browsers": ["last 2 Chrome versions"]
+        }
       }
     ]
   ],
