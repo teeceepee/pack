@@ -1,6 +1,6 @@
-var path = require('path');
-var AssetsPlugin = require('assets-webpack-plugin');
-var BabiliPlugin = require('babili-webpack-plugin');
+var path = require('path')
+var AssetsPlugin = require('assets-webpack-plugin')
+var BabiliPlugin = require('babili-webpack-plugin')
 
 
 module.exports = {
@@ -21,32 +21,32 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public', 'assets'),
     publicPath: '/assets/',
-    filename: '[name].js'
+    filename: '[name].js',
   },
   module: {
     loaders: [
       {
         test : /\.jsx?/,
         exclude: /node_modules/,
-        loader : 'babel'
+        loader : 'babel',
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css']
+        loaders: ['style', 'css'],
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        loaders: ['style', 'css', 'sass'],
       },
       {
         test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=[name]-[hash].[ext]'
+        loader: 'file-loader?name=[name]-[hash].[ext]',
       },
       {
         test: /\.jpg$/,
-        loader: 'file-loader?name=[path][name]-[hash].[ext]'
-      }
-    ]
+        loader: 'file-loader?name=[path][name]-[hash].[ext]',
+      },
+    ],
   },
 
   plugins: [
@@ -72,11 +72,11 @@ module.exports = {
     }),
     new AssetsPlugin({
       path: path.resolve(__dirname, 'public', 'assets'),
-      prettyPrint: true
+      prettyPrint: true,
     }),
   ],
 
   sassLoader: {
-    outputStyle: 'nested'
-  }
-};
+    outputStyle: 'nested',
+  },
+}
