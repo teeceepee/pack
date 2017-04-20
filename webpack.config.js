@@ -1,5 +1,7 @@
 var path = require('path');
 var AssetsPlugin = require('assets-webpack-plugin');
+var BabiliPlugin = require('babili-webpack-plugin');
+
 
 module.exports = {
   entry: {
@@ -48,10 +50,30 @@ module.exports = {
   },
 
   plugins: [
+    new BabiliPlugin({
+      evaluate: false,
+      deadcode: false,
+      infinity: false,
+      mangle: false,
+      numericLiterals: false,
+      replace: false,
+      simplify: false,
+      builtIns: false,
+      mergeVars: false,
+      booleans: false,
+      regexpConstructors: false,
+      removeConsole: false,
+      removeDebugger: false,
+      removeUndefined: false,
+      undefinedToVoid: false,
+
+      unsafe: false,
+      properties: false,
+    }),
     new AssetsPlugin({
       path: path.resolve(__dirname, 'public', 'assets'),
       prettyPrint: true
-    })
+    }),
   ],
 
   sassLoader: {
