@@ -89,4 +89,10 @@ module.exports = {
     }),
   ],
 
+  // inline mode enabled by default in webpack dev server v2
+  // https://github.com/webpack/webpack-dev-server/releases/tag/v2.1.0-beta.2
+  devServer: {
+    inline: true,
+  },
+
 }
