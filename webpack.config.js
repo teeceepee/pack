@@ -24,19 +24,32 @@ module.exports = {
     filename: '[name].js',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test : /\.jsx?/,
         exclude: /node_modules/,
-        loader : 'babel',
+        loader : 'babel-loader',
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css'],
+        loaders: ['style-loader', 'css-loader'],
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              outputStyle: 'nested', // https://github.com/sass/node-sass#outputstyle
+            },
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -76,7 +89,4 @@ module.exports = {
     }),
   ],
 
-  sassLoader: {
-    outputStyle: 'nested',
-  },
 }

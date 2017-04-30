@@ -1,5 +1,5 @@
 // Expose jQuery to global window object.
-require("expose?$!jquery");
+require("expose-loader?$!jquery");
 
 require('./app');
 
